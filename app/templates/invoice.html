@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<li>{{ entry.wystawca.nazwa }}, {{ entry.wystawca.miasto }} ul. {{ entry.wystawca.ulica }}</li>
+{% if entry.wlasciciel %}
+<li>{{ entry.wlasciciel.imie }} {{ entry.wlasciciel.nazwisko }}, {{ entry.wlasciciel.mieszkanie.budynek.adres.miasto }} ul. {{ entry.wlasciciel.mieszkanie.budynek.adres.ulica }}/{{ entry.wlasciciel.mieszkanie.nr_mieszkania }}</li>
+{% endif %}
+{% load app_filters %}
+<li>{{ entry.wartosc_netto }} zł netto, {{ entry.wartosc_netto|brutto }} zł brutto</li>
+{% if user.is_authenticated %}
+<form action="{% url 'delete' entry.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" value="{{ entry | to_class_name }}" name="name"></input>
+    <button type="submit" class="btn btn-danger">Usuń</button>
+</form>
+{% endif %}
+
+{% endblock content %}

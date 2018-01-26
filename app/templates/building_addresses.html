@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if building_address_list %}
+{% for building_address in building_address_list %}
+<li>Adres: <a href="/building_address/{{ building_address.id }}/">{{ building_address.miasto }}, ul. {{ building_address.ulica }}</a></li>
+{% endfor %}
+{% else %}
+<li>Brak budynków</li>
+{% endif %}
+
+{% endblock content %}

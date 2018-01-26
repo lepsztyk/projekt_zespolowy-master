@@ -1,0 +1,13 @@
+INSERT INTO adres (kod_pocztowy, miasto, ulica, telefon, email) VALUES ('80-180','Gdańsk','Grunwaldzka 104','456245930','email@mail.com');
+INSERT INTO stanowisko (nazwa, pensja) VALUES ('Ciec', '1500');
+INSERT INTO pracownik (stanowisko, budynek, imie, nazwisko, adres) VALUES ('1', '1', 'Jan', 'Kowalski', '1');
+INSERT INTO budynek (adres, administrator) VALUES ('1','1');
+INSERT INTO nadgodziny (pracownik, ilosc) VALUES ('1', '3.5');
+INSERT INTO wlasciciel (imie, nazwisko, adres) VALUES ('Janusz', 'Wąsacz', '1');
+INSERT INTO mieszkanie (budynek, metraz, liczba_pokoi, piwnica, wlasciciel) VALUES ('1', '35.5', '2', True, '1');
+INSERT INTO wystawca (nazwa, adres) VALUES ('Firma krzak', '1');
+INSERT INTO faktura (wartosc_netto, wystawca, adres, wlasciciel) VALUES ('242.34', '1', '1', '1');
+INSERT INTO licznik (typ, cena_netto) VALUES ('Woda', '3.4');
+INSERT INTO stan_licznik (typ, mieszkanie, stan) VALUES ('1', '1', '4324.3');
+INSERT INTO ticket (kto, mieszkanie, opis) VALUES ('1', '1', 'Opis ticketu');
+INSERT INTO wydarzenie (nazwa, opis, data) VALUES ('Wydarzenie xD', 'Opis tego wydarzenia', CURRENT_DATE);

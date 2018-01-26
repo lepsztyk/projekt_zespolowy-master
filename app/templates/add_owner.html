@@ -1,0 +1,30 @@
+{% extends "base.html" %} 
+{% block content %}
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <div class="form-group">
+        <input class="form-control" id="id imie" name="imie" placeholder="Imie" required pattern="[A-Z][A-Za-z]+"></input>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id nazwisko" name="nazwisko" placeholder="Nazwisko" required pattern="[A-Z][A-Za-z]+"></input>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id telefon" name="telefon" placeholder="Telefon" required pattern="[0-9]{9}"></input>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id email" name="email" placeholder="Email" required pattern="[A-Za-z0-9]+[@][A-Za-z.]+"></input>
+    </div>
+    <div class="form-group">
+        <select name="mieszkanie" id="id mieszkanie" class="custom-select" required>
+                <option selected disabled>Wybierz mieszkanie</option>
+                {% if flat_list %}
+                {% for flat in flat_list %}
+                <option value="{{ flat.id }}">{{ flat.budynek.adres.miasto }} ul. {{ flat.budynek.adres.ulica }}/{{ flat.nr_mieszkania }}</option>
+                {% endfor %}
+                {% endif %}
+              </select>
+</div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+
+{% endblock content %}

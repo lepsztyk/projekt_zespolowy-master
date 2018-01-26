@@ -1,0 +1,19 @@
+.navbar {margin-bottom: 20px;}
+
+.was-validated .form-control:valid, .form-control.is-valid, .was-validated
+.custom-select:valid,
+.custom-select.is-valid {
+  border-color: #28a745 !important;
+}
+
+.was-validated .form-control:valid, .form-control.is-invalid, .was-validated
+.custom-select:valid,
+.custom-select.is-invalid {
+  border-color: #dc3545 !important;
+}
+body {
+  background-image:url(background.jpg);
+  background-repeat: no-repeat;
+  min-height: 679px;
+  background-size: cover;
+}

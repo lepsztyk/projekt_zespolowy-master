@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <div class="form-group">
+        <select name="budynek" id="id budynek" class="custom-select" required>
+                <option selected disabled>Wybierz budynek</option>
+                {% if building_list %}
+                {% for budynek in building_list %}
+                <option value="{{ budynek.id }}">{{ budynek.adres.miasto }} ul. {{ budynek.adres.ulica }}</option>
+                {% endfor %}
+                {% endif %}
+              </select>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id metraz" name="metraz" placeholder="Metraż" required pattern="[0-9]{9}"></input>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id liczba_pokoi" name="liczba_pokoi" placeholder="Liczba pokoi" required pattern="[0-9]{9}"></input>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id piwnica" name="piwnica" placeholder="Piwnica" required pattern="[0-9]{9}"></input>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id numer_mieszkania" name="numer_mieszkania" placeholder="Numer mieszkania" required pattern="[0-9]{9}"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %} 
+{% block content %}
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <div class="form-group">
+        <input class="form-control" id="id typ" name="typ" placeholder="Typ" required pattern="[A-Z][A-Za-z' -]+"></input>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id cena_netto" name="cena_netto" placeholder="Cena netto" required pattern="[0-9]+([\.,][0-9]+)?"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+
+{% endblock content %}

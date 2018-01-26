@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if this_item %}
+<p>Edycja</P>
+{% endif %}
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <div class="form-group">
+        <select name="wystawca" id="id wystawca" class="custom-select" required>
+                {% if this_item %}
+                <option selected value="{{ this_item.wystawca.id }}">{{ this_item.wystawca.nazwa }} | {{ this_item.wystawca.miasto }} ul. {{ this_item.wystawca.ulica }} (Nie zmieniaj)</option>
+                {% else %}
+                <option selected disabled>Wybierz wystawce</option>
+                {% endif %}
+                {% if issuers_list %}
+                {% for issuer in issuers_list %}
+                <option value="{{ issuer.id }}">{{ issuer.nazwa }} | {{ issuer.miasto }} ul. {{ issuer.ulica }}</option>
+                {% endfor %}
+                {% endif %}
+              </select>
+    </div>
+    <div class="form-group">
+        <select name="wlasciciel" id="id wlasciciel" class="custom-select" required>
+                {% if this_item %}
+                <option selected value="{{ this_item.wlasciciel.id }}">{{ this_item.wlasciciel.imie }} {{ this_item.wlasciciel.nazwisko }} | {{ this_item.wlasciciel.mieszkanie.budynek.adres.miasto }} ul. {{ this_item.wlasciciel.mieszkanie.budynek.adres.ulica }}/{{ this_item.wlasciciel.mieszkanie.nr_mieszkania }} (Nie zmieniaj)</option>
+                {% else %}
+                <option selected disabled>Wybierz mieszkańca</option>
+                {% endif %}
+                {% if owners_list %}
+                {% for owner in owners_list %}
+                <option value="{{ owner.id }}">{{ owner.imie }} {{ owner.nazwisko }} | {{ owner.mieszkanie.budynek.adres.miasto }} ul. {{ owner.mieszkanie.budynek.adres.ulica }}/{{ owner.mieszkanie.nr_mieszkania }}</option>
+                {% endfor %}
+                {% endif %}
+              </select>
+    </div>    
+    <div class="form-group">
+        <input type="text" class="form-control" type="number" name="wartosc_netto" step="any" required id="id_wartosc_netto" placeholder="Wartosc netto" required pattern="[0-9]+([\.,][0-9]+)?" value="{% if this_item %}{{ this_item.wartosc_netto }}{% endif %}">
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+
+{% endblock content %}

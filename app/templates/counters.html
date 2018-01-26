@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if counters_list %}
+{% for counters in counters_list %}
+<li>Licznik: <a href="/counter/{{ counters.id }}/">{{ counters.typ }}</a>, cena netto: {{ counters.cena_netto }} zł.</li>
+{% endfor %}
+{% else %}
+<li>Brak liczników</li>
+{% endif %}
+
+{% endblock content %}

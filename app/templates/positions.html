@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if position_list %}
+{% for position in position_list %}
+<li>Nazwa: <a href="/position/{{ position.id }}/">{{ position.nazwa }}</a>, pensja: {{ position.pensja }} zł.</li>
+{% endfor %}
+{% else %}
+<li>Brak stanowisk</li>
+{% endif %}
+
+{% endblock content %}

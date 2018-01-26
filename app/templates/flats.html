@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if flats_list %}
+{% for flat in flats_list %}
+<li>Numer mieszkania: <a href="/flat/{{ flat.id }}/">{{ flat.nr_mieszkania }}</a>, Adres: {{ flat.budynek.adres.miasto }}, ul. {{ flat.budynek.adres.ulica }}</li>
+{% endfor %}
+{% else %}
+<li>Brak mieszkań</li>
+{% endif %}
+
+{% endblock content %}

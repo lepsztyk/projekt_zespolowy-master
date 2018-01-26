@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if counter_state_list %}
+{% for counter_state in counter_state_list %}
+<li><a href="/counter/state/{{ counter_state.id }}/">{{ counter_state.mieszkanie.nr_mieszkania }}</a>, {{ counter_state.mieszkanie.budynek.adres.miasto }} ul. {{ counter_state.mieszkanie.budynek.adres.ulica }} | Typ: {{ counter_state.typ.typ }} Stan: {{ counter_state.stan }}</li>
+{% endfor %}
+{% else %}
+<li>Brak wystawców</li>
+{% endif %}
+
+{% endblock content %}

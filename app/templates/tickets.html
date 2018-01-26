@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if tickets_list %}
+{% for ticket in tickets_list %}
+<li><a href="/ticket/{{ ticket.id }}/">{{ ticket.opis|truncatechars:30 }}</a>, przez {{ ticket.zglaszajacy }}</li>
+{% endfor %}
+{% else %}
+<li>Brak zgłoszeń</li>
+{% endif %}
+
+{% endblock content %}
+
+<!-- my tickets -->

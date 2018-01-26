@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <div class="form-group">
+        <select name="pracownik" id="id pracownik" class="custom-select" required>
+                <option selected disabled>Wybierz Pracownika</option>
+                {% if worker_list %}
+                {% for worker in worker_list %}
+                <option value="{{ worker.id }}">{{ worker.imie }} {{ worker.nazwisko }}</option>
+                {% endfor %}
+                {% endif %}
+              </select>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" type="number" name="ilosc" step="any" required pattern="[0-9]+" id="id_ilosc" placeholder="Ilość" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<li>{{ entry.nazwa }}</li>
+<li>{{ entry.opis }}</li>
+<li>{{ entry.data }}</li>
+{% if entry.budynek.adres %}
+<li>{{ entry.budynek.adres.kod_pocztowy }} {{ entry.budynek.adres.miasto}} ul. {{ entry.budynek.adres.ulica }}</li>
+{% endif %}
+{% if user.is_authenticated %}
+{% load app_filters %}
+<form action="{% url 'delete' entry.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" value="{{ entry | to_class_name }}" name="name"></input>
+    <button type="submit" class="btn btn-danger">Usuń</button>
+</form>
+{% endif %}
+
+{% endblock content %}

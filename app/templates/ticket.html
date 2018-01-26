@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<li>{{ entry.zglaszajacy }}</li>
+<li>{{ entry.opis }}</li>
+{% if entry.pracownik %}
+{% if user.is_authenticated %}
+{% load app_filters %}
+<li>Przyjęty przez: {{ entry.pracownik }}</li>
+<form action="{% url 'delete' entry.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" value="{{ entry | to_class_name }}" name="name"></input>
+    <button type="submit" class="btn btn-danger" onclick="return confirm('Czy chcesz usunąć?');">Usuń</button>
+</form>
+{% endif %}
+{% else %}
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+    <button type="submit" class="btn btn-primary">Przyjmij zgłoszenie</button>
+    {% endif %}
+</form>
+{% endif %}
+
+{% endblock content %}

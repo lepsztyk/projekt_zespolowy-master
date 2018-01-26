@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if owners_list %}
+{% for owner in owners_list %}
+<li><a href="/owner/{{ owner.id }}/">{{ owner.imie}} {{ owner.nazwisko }}</a>, {{ owner.mieszkanie.budynek.adres.miasto }} ul. {{ owner.mieszkanie.budynek.adres.ulica }}/{{ owner.mieszkanie.nr_mieszkania }}</li>
+{% endfor %}
+{% else %}
+<li>Brak właścicieli</li>
+{% endif %}
+
+{% endblock content %}

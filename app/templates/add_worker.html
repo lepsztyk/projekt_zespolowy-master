@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <div class="form-group">
+        <select name="stanowisko" id="id stanowisko" class="custom-select" required>
+                <option selected disabled>Wybierz stanowisko</option>
+                {% if position_list %}
+                {% for position in position_list %}
+                <option value="{{ position.id }}">{{ position.nazwa }}</option>
+                {% endfor %}
+                {% endif %}
+              </select>
+    </div>
+    <div class="form-group">
+        <select name="adres" id="id adres" class="custom-select" required>
+                <option selected disabled>Wybierz adres</option>
+                {% if address_list %}
+                {% for address in address_list %}
+                <option value="{{ address.id }}">{{ address.kod_pocztowy }} {{ address.miasto }} ul. {{ address.ulica }}</option>
+                {% endfor %}
+                {% endif %}
+              </select>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id imie" name="imie" placeholder="Imie" required pattern="[A-Z][A-Za-z]+"></input>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id nazwisko" name="nazwisko" placeholder="Nazwisko" required pattern="[A-Z][A-Za-z]+"></input>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id telefon" name="telefon" placeholder="Telefon" required pattern="[0-9]{9}"></input>
+    </div>
+    <div class="form-group">
+        <input class="form-control" id="id email" name="email" placeholder="Email" required pattern="[A-Za-z0-9]+[@][A-Za-z.]+"></input>
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+
+{% endblock content %}

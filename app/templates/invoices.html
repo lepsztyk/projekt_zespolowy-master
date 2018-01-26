@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if invoice_list %}
+{% for invoice in invoice_list %}
+<li>Dla <a href="/invoice/{{ invoice.id }}/">{{ invoice.wlasciciel.imie }} {{ invoice.wlasciciel.nazwisko }}</a>, przez {{ invoice.wystawca.nazwa }}</li>
+{% endfor %}
+{% else %}
+<li>Brak faktur</li>
+{% endif %}
+
+{% endblock content %}

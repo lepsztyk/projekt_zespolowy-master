@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<li>{{ entry.imie }} {{ entry.nazwisko }}</li>
+<li>{{ entry.mieszkanie.budynek.adres.kod_pocztowy }} {{ entry.mieszkanie.budynek.adres.miasto }} ul. {{ entry.mieszkanie.budynek.adres.ulica }}</li>
+<li>{{ entry.telefon }} {{ entry.email }}</li>
+{% if user.is_authenticated %}
+{% load app_filters %}
+<div class="btn-group">
+<form action="{% url 'delete' entry.id %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" value="{{ entry | to_class_name }}" name="name"></input>
+    <button type="submit" class="btn btn-danger">Usuń</button>
+</form>
+<a class="btn btn-primary" href="{% url 'pdf' entry.id %}" role="button">Wygeneruj fakturę</a>
+{% endif %}
+</div>
+
+{% endblock content %}

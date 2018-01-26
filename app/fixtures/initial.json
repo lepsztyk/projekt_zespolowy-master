@@ -1,0 +1,166 @@
+[
+    {
+        "model": "app.adres",
+        "pk": 1,
+        "fields": {
+            "kod_pocztowy": "80-180",
+            "miasto": "Gda\u0144sk",
+            "ulica": "Grunwaldzka 100"
+        }
+    },
+    {
+        "model": "app.adresbudynek",
+        "pk": 1,
+        "fields": {
+            "kod_pocztowy": "80-180",
+            "miasto": "Gda\u0144sk",
+            "ulica": "Po\u0142\u0119\u017ce 3"
+        }
+    },
+    {
+        "model": "app.budynek",
+        "pk": 1,
+        "fields": {
+            "adres": 1,
+            "administrator": 1
+        }
+    },
+    {
+        "model": "app.faktura",
+        "pk": 1,
+        "fields": {
+            "wartosc_netto": 1245.3,
+            "wystawca": 1,
+            "wlasciciel": 1
+        }
+    },
+    {
+        "model": "app.mieszkanie",
+        "pk": 1,
+        "fields": {
+            "budynek": 1,
+            "metraz": 35.2,
+            "liczba_pokoi": 3,
+            "piwnica": true,
+            "nr_mieszkania": 35
+        }
+    },
+    {
+        "model": "app.nadgodziny",
+        "pk": 1,
+        "fields": {
+            "pracownik": 1,
+            "ilosc": 3.5
+        }
+    },
+    {
+        "model": "app.pracownik",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "stanowisko": 1,
+            "budynek": 1,
+            "imie": "Jan",
+            "nazwisko": "Kowalski",
+            "telefon": "123456789",
+            "email": "mail@gmail.com",
+            "adres": 1
+        }
+    },
+    {
+        "model": "app.licznik",
+        "pk": 1,
+        "fields": {
+            "typ": "Woda",
+            "cena_netto": 3.4
+        }
+    },
+    {
+        "model": "app.stanlicznik",
+        "pk": 1,
+        "fields": {
+            "typ": 1,
+            "mieszkanie": 1,
+            "stan": 4324.3
+        }
+    },
+    {
+        "model": "app.stanowisko",
+        "pk": 1,
+        "fields": {
+            "nazwa": "Administrator budynku",
+            "pensja": 2000
+        }
+    },
+    {
+        "model": "app.wlasciciel",
+        "pk": 1,
+        "fields": {
+            "imie": "Janusz",
+            "nazwisko": "W\u0105s",
+            "telefon": "876678768",
+            "email": "was@gmail.com",
+            "mieszkanie": 1
+        }
+    },
+    {
+        "model": "app.ticket",
+        "pk": 1,
+        "fields": {
+            "pracownik": null,
+            "zglaszajacy": "admin",
+            "opis": "To jest opis zgloszenia, jakis tam",
+            "data": "2017-11-18"
+        }
+    },
+    {
+        "model": "app.wydarzenie",
+        "pk": 1,
+        "fields": {
+            "nazwa": "Nazwa wydarzenia",
+            "opis": "Opis wydarzenia",
+            "data": "2017-11-24",
+            "budynek": 1
+        }
+    },
+    {
+        "model": "app.wystawca",
+        "pk": 1,
+        "fields": {
+            "nazwa": "Firma krzak",
+            "kod_pocztowy": "80-180",
+            "miasto": "Gda\u0144sk",
+            "ulica": "Wita Stwosza 57",
+            "telefon": "987654367",
+            "email": "krzak@gmail.com"
+        }
+    },
+    {
+        "model": "auth.group",
+        "pk": 1,
+        "fields": {
+            "name": "Pracownik",
+            "permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$36000$aVt75JEWJlrK$d4qQPXh+t1oPA1akIVsA224EscvwyMihNTAcqUXjGXA=",
+            "last_login": "2017-11-18T11:47:56Z",
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "a@a.pl",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2017-11-18T11:45:48Z",
+            "groups": [
+                1
+            ],
+            "user_permissions": []
+        }
+    }
+]

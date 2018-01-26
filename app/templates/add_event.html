@@ -1,0 +1,33 @@
+{% extends "base.html" %} 
+{% block content %}
+{% if this_item %}
+<p>Edycja</P>
+{% endif %}
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" class="form-control" id="id nazwa" name="nazwa" placeholder="Nazwa wydarzenie" required value="{% if this_item %}{{ this_item.nazwa }}{% endif %}"></div>
+    <div class="form-group">
+        <textarea cols="20" class="form-control" id="id opis" name="opis" placeholder="Opis wydarzenia" required>{% if this_item %}{{ this_item.opis }}{% endif %}</textarea>
+    </div>
+    <div class="form-group">
+        <input type="date" class="form-control" id="id data" name="data" placeholder="Data wydarzenia" required value="{% if this_item %}{{ this_item.data }}{% endif %}">
+    </div>
+    <div class="form-group">
+            <select name="budynek" id="id budynek" class="custom-select" required>
+                    {% if this_item %}
+                    <option selected value="{{ this_item.budynek.id }}">{{ this_item.budynek.adres.miasto }} ul. {{ this_item.budynek.adres.ulica }} (Nie zmieniaj)</option>
+                    {% else %}
+                    <option selected disabled>Wybierz budynek</option>
+                    {% endif %}
+                    {% if building_list %}
+                    {% for budynek in building_list %}
+                    <option value="{{ budynek.id }}">{{ budynek.adres.miasto }} ul. {{ budynek.adres.ulica }}</option>
+                    {% endfor %}
+                    {% endif %}
+                  </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+
+{% endblock content %}

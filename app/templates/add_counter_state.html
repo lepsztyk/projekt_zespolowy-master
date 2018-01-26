@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <div class="form-group">
+        <select name="typ" id="id typ" class="custom-select" required>
+                <option selected disabled>Wybierz Typ</option>
+                {% if counters_list %}
+                {% for counters in counters_list %}
+                <option value="{{ counters.id }}">{{ counters.typ }} | {{ counters.cena_netto }}</option>
+                {% endfor %}
+                {% endif %}
+              </select>
+    </div>
+    <div class="form-group">
+        <select name="mieszkanie" id="id mieszkanie" class="custom-select" required>
+                <option selected disabled>Wybierz mieszkanie</option>
+                {% if flat_list %}
+                {% for flat in flat_list %}
+                <option value="{{ flat.id }}">{{ flat.budynek.adres.miasto }} ul. {{ flat.budynek.adres.ulica }}/{{ flat.nr_mieszkania }}</option>
+                {% endfor %}
+                {% endif %}
+              </select>
+</div>   
+    <div class="form-group">
+        <input type="text" class="form-control" type="number" name="stan" step="any" required id="id_stan" placeholder="Stan" required pattern="[0-9]+">
+    </div>
+    <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+
+{% endblock content %}

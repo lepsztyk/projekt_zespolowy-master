@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if worker_list %}
+{% for worker in worker_list %}
+<li><a href="/worker/{{ worker.id }}/">{{ worker.imie }} {{ worker.nazwisko }}</a>, {{ worker.stanowisko.nazwa }}</li>
+{% endfor %}
+{% else %}
+<li>Brak pracowników</li>
+{% endif %}
+
+{% endblock content %}
